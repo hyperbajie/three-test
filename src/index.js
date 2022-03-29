@@ -1,9 +1,6 @@
 
 import * as THREE from "three"
-
-window.onload = function () {
-    start();
-}
+import "../css/index.css"
 
 let cube, renderer, scene, camera;
 
@@ -16,9 +13,9 @@ function start() {
 
     {
         const fov = 75;
-        const aspect = 1;
+        const aspect = 2;
         const near = 0.1;
-        const far = 5;
+        const far = 1000;
         camera = new THREE.PerspectiveCamera(fov, aspect, near, far);;
         camera.position.z = 2;
     }
@@ -51,9 +48,28 @@ function start() {
     render();
 }
 
+function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+        renderer.setSize(width, height, false);
+    }
+
+    return needResize;
+}
+
 function render() {
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
+    if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
     renderer.render(scene, camera);
     requestAnimationFrame(render);
 }
+
+start();
