@@ -1,6 +1,8 @@
 
 import * as THREE from "three"
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import "../css/index.css"
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 
 let cube, renderer, scene, camera;
 
@@ -17,7 +19,7 @@ function start() {
         const near = 0.1;
         const far = 1000;
         camera = new THREE.PerspectiveCamera(fov, aspect, near, far);;
-        camera.position.z = 2;
+        camera.position.z = 10;
     }
 
     {
@@ -41,11 +43,44 @@ function start() {
         scene.add(light);
     }
 
+    {
+        const loader = new FontLoader();
+        loader.load("gentilis_bold.typeface.json", (font) => {
+            const geometry = new TextGeometry('three.js', {
+                font: font,
+                size: 3.0,
+                height: 0.1,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.15,
+                bevelSize: .3,
+                bevelSegments: 5,
+            });
+            const mesh = new THREE.Mesh(geometry, createMaterial())
+            geometry.computeBoundingBox();
+            geometry.boundingBox.getCenter(mesh.position).multiplyScalar(-1);
+            scene.add(mesh)
+        })
+
+    }
+
     var axesHelper = new THREE.AxesHelper(20);
     scene.add(axesHelper);
 
     renderer.render(scene, camera);
     render();
+}
+function createMaterial() {
+    const material = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+    });
+
+    const hue = Math.random();
+    const saturation = 1;
+    const luminance = .5;
+    material.color.setHSL(hue, saturation, luminance);
+
+    return material;
 }
 
 function resizeRendererToDisplaySize(renderer) {
