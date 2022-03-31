@@ -2,7 +2,7 @@ import { mgr } from "../base";
 import * as THREE from "three";
 export const name = "box";
 export function init() {
-    console.log("now start init box");
+    // console.log("now start init box");
     const boxWidth = 1;
     const boxHeight = 1;
     const boxDepth = 1;

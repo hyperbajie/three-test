@@ -13,7 +13,7 @@ function init() {
     requireFiles.keys().forEach(fileName => {
         if (/.js$/.test(fileName)) {
             let file = requireFiles(fileName);
-            console.log(file);
+            // console.log(file);
             let liEle = document.createElement("li");
             liEle.innerText = file.name;
             // 收集
