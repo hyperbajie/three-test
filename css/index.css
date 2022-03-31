@@ -5,6 +5,13 @@ body {
 }
 canvas {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 200px);
   display: block;
+}
+ul {
+  display: flex;
+}
+li {
+  cursor: pointer;
+  margin: 0 20px;
 }

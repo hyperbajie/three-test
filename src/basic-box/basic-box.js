@@ -1,6 +1,8 @@
 import { mgr } from "../base";
 import * as THREE from "three";
+export const name = "box";
 export function init() {
+    console.log("now start init box");
     const boxWidth = 1;
     const boxHeight = 1;
     const boxDepth = 1;
@@ -22,3 +24,4 @@ export function init() {
         cube.rotation.y += 0.01;
     });
 }
+
