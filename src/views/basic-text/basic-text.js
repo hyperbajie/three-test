@@ -1,11 +1,11 @@
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import { mgr } from "../base";
+import { mgr } from "@/base";
 import * as THREE from "three";
 export const name = "text";
 export function init() {
     const loader = new FontLoader();
-    loader.load("gentilis_bold.typeface.json", (font) => {
+    loader.load("assets/gentilis_bold.typeface.json", (font) => {
         const geometry = new TextGeometry('three.js', {
             font: font,
             size: 3.0,

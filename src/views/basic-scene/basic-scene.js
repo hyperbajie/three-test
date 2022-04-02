@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { mgr } from "../base";
+import { mgr } from "@/base";
 import GUI from "lil-gui";
 
 export const name = "scene";

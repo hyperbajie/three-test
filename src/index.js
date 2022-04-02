@@ -1,7 +1,7 @@
 
 // import * as THREE from "three"
 // 
-import "../css/index.css"
+import "./css/index.css"
 import { mgr } from "./base";
 
 let clickEvents = {};
@@ -9,7 +9,7 @@ let curTab = "";
 function init() {
     let ulEle = document.createElement("ul");
     // const requireFiles = require.context('/src/', true, /(^basic-)*(\.js$)/)
-    const requireFiles = require.context('/src/', true, /(basic-)+/)
+    const requireFiles = require.context('/src/views', true, /(basic-)+/)
     requireFiles.keys().forEach(fileName => {
         if (/.js$/.test(fileName)) {
             let file = requireFiles(fileName);

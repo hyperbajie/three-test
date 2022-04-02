@@ -14,7 +14,8 @@ module.exports = merge(common, {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: "assets"
+                    from: "src/assets",
+                    to: "assets"
                 }
             ]
         })

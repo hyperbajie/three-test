@@ -1,4 +1,4 @@
-import { mgr } from "../base";
+import { mgr } from "@/base";
 import * as THREE from "three";
 export const name = "box";
 export function init() {
